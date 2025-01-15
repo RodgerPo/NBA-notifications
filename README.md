@@ -1,7 +1,7 @@
 # NBA Game Day Notifications / Sports Alerts System
 
 ## **Project Overview**
-- In this project we are building an NBA Notifications system that utilizies the sportsdata.io API to fetch game data including schedules, scores, as well as which arena the game is being played in. This is designed to be run on a scheduled timer to continously fetch the information at the desired intervals. This program has the ability to send notifications in various formats including email, SMS text, and webhook endpoints.
+- In this project we are building an NBA Notifications system that utilizies the sportsdata.io API to fetch game data including schedules, scores, as well as which arena the game is being played in. This is designed to be run on a scheduled timer to continuously fetch the information at the desired intervals. This program has the ability to send notifications in various formats including email, SMS text, and webhook endpoints.
 ---
 
 ## Technologies Used
@@ -23,7 +23,7 @@
 - Periodic fetching of NBA game data in real-time.
   - Includes team matchups, schedules, venue, and more.
 - Data is automatically sourced and distributed every 3 hours.
-- Automated notifications sent directly to phones as SMS text messages, and email. 
+- Automated notifications are sent directly to phones as SMS text messages and email.
 
 ---
 
@@ -48,6 +48,7 @@
 - **Automated Notifications**: Deliver timely updates to users about dynamic data like NBA game scores, stock prices, product availability, etc.
 - **Event Reminders**: Schedule periodic alerts for upcoming events such as meetings, product sales, live broadcasts, etc.
 - **Multi-channel Distribution**: Distribute information seamlessly across various channels like SMS and email that can scale to millions of users.
+- **Serverless Code Execution**: Run code without the need to provision and pay for servers to host it. Simply execute the code when required.
 
 ---
 
@@ -56,6 +57,7 @@
 - Automated Workflows
 - Python Development
 - Least Privilege
+- Serverless Computing
 
 ---
 
