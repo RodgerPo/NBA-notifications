@@ -1,7 +1,7 @@
 # NBA Game Day Notifications / Sports Alerts System
 
 ## **Project Overview**
-In this project we are building an NBA Notifications system that utilizies the sportsdata.io API to fetch game data including schedules, scores, as well as which arena the game is being played in. This is designed to be run on a scheduled timer to continously fetch the information at the desired intervals. This program has the ability to send notifications in various formats including email, SMS text, and webhook endpoints.
+- In this project we are building an NBA Notifications system that utilizies the sportsdata.io API to fetch game data including schedules, scores, as well as which arena the game is being played in. This is designed to be run on a scheduled timer to continously fetch the information at the desired intervals. This program has the ability to send notifications in various formats including email, SMS text, and webhook endpoints.
 ---
 
 ## Technologies Used
@@ -15,7 +15,7 @@ In this project we are building an NBA Notifications system that utilizies the s
 ---
 
 ## **Technical Architecture**
-![nba_API](https://gifyu.com/image/Se2hF)
+![nba_API](https://s13.gifyu.com/images/Se2hF.gif)
 
 ---
 
