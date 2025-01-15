@@ -11,6 +11,7 @@ def format_game_data(game):
     final_score = f"{game.get('AwayTeamScore', 'N/A')}-{game.get('HomeTeamScore', 'N/A')}"
     start_time = game.get("DateTime", "Unknown")
     channel = game.get("Channel", "Unknown")
+    venue = game.get("StadiumID", [])
     
     # Format quarters
     quarters = game.get("Quarters", [])
@@ -24,6 +25,7 @@ def format_game_data(game):
             f"Start Time: {start_time}\n"
             f"Channel: {channel}\n"
             f"Quarter Scores: {quarter_scores}\n"
+            f"Venue: {venue[0]['Name'] if venue and venue[0] else 'N/A'}\n"
         )
     elif status == "InProgress":
         last_play = game.get("LastPlay", "N/A")
@@ -33,6 +35,7 @@ def format_game_data(game):
             f"Current Score: {final_score}\n"
             f"Last Play: {last_play}\n"
             f"Channel: {channel}\n"
+            f"Venue: {venue[0]['Name'] if venue and venue[0] else 'N/A'}\n"
         )
     elif status == "Scheduled":
         return (
@@ -54,9 +57,9 @@ def lambda_handler(event, context):
     sns_topic_arn = os.getenv("SNS_TOPIC_ARN")
     sns_client = boto3.client("sns")
     
-    # Adjust for Central Time (UTC-6)
+    # Adjust for EST timezone (UTC-5)
     utc_now = datetime.now(timezone.utc)
-    central_time = utc_now - timedelta(hours=6)  # Central Time is UTC-6
+    central_time = utc_now - timedelta(hours=5)  # Switched to EST timezone
     today_date = central_time.strftime("%Y-%m-%d")
     
     print(f"Fetching games for date: {today_date}")

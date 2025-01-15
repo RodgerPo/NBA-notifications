@@ -1,53 +1,65 @@
 # NBA Game Day Notifications / Sports Alerts System
 
 ## **Project Overview**
-This project is an alert system that sends real-time NBA game day score notifications to subscribed users via SMS/Email. It leverages **Amazon SNS**, **AWS Lambda and Python**, **Amazon EvenBridge** and **NBA APIs** to provide sports fans with up-to-date game information. The project demonstrates cloud computing principles and efficient notification mechanisms.
-
+In this project we are building an NBA Notifications system that utilizies the sportsdata.io API to fetch game data including schedules, scores, as well as which arena the game is being played in. This is designed to be run on a scheduled timer to continously fetch the information at the desired intervals. This program has the ability to send notifications in various formats including email, SMS text, and webhook endpoints.
 ---
 
-## **Features**
-- Fetches live NBA game scores using an external API.
-- Sends formatted score updates to subscribers via SMS/Email using Amazon SNS.
-- Scheduled automation for regular updates using Amazon EventBridge.
-- Designed with security in mind, following the principle of least privilege for IAM roles.
-
-## **Prerequisites**
-- Free account with subscription and API Key at [sportsdata.io](https://sportsdata.io/)
-- Personal AWS account with basic understanding of AWS and Python
+## Technologies Used
+- **AWS Eventbridge**
+- **AWS Lambda**
+- **AWS SNS**
+- **AWS IAM**
+- **SportsData.io API**
+- **Python AWS SDK (Boto3)**
 
 ---
 
 ## **Technical Architecture**
-![nba_API](https://github.com/user-attachments/assets/5e19635e-0685-4c07-9601-330f7d1231f9)
-
-
----
-
-
-## **Technologies**
-- **Cloud Provider**: AWS
-- **Core Services**: SNS, Lambda, EventBridge
-- **External API**: NBA Game API (SportsData.io)
-- **Programming Language**: Python 3.x
-- **IAM Security**:
-  - Least privilege policies for Lambda, SNS, and EventBridge.
+![nba_API](https://gifyu.com/image/Se2hF)
 
 ---
 
-## **Project Structure**
-```bash
-game-day-notifications/
-├── src/
-│   ├── gd_notifications.py          # Main Lambda function code
-├── policies/
-│   ├── gb_sns_policy.json           # SNS publishing permissions
-│   ├── gd_eventbridge_policy.json   # EventBridge to Lambda permissions
-│   └── gd_lambda_policy.json        # Lambda execution role permissions
-├── .gitignore
-└── README.md                        # Project documentation
-```
+## Key Features
+- Periodic fetching of NBA game data in real-time.
+  - Includes team matchups, schedules, venue, and more.
+- Data is automatically sourced and distributed every 3 hours.
+- Automated notifications sent directly to phones as SMS text messages, and email. 
 
-## **Setup Instructions**
+---
+
+## Challenges & Solutions
+- **SportsData API**: 
+  - The documentation for the API was difficult to understand, but after some googling I was able to get the results I wanted.
+- **Eventbridge Scheduling**: 
+  - The cron format of scheduling was new to me and caused me issues with setting up a schedule correctly.  
+
+---
+
+### **Lessons Learned**
+- How to build a notifications system that runs on a scheduled timer.
+- How to make sure that the services involved were able to interact with each other through IAM policies and roles, while ensuring Least-Privilege practices.
+- How to use Eventbridge to schedule a trigger that will invoke a Lambda function. This uses cron notation.
+- How to automate the distribution of alerts to different devices/technologies including SMS, Email and webhooks.
+- The concept of event-driven architecture and how it functions in a cloud environment.
+
+---
+
+## Real-World Applications
+- **Automated Notifications**: Deliver timely updates to users about dynamic data like NBA game scores, stock prices, product availability, etc.
+- **Event Reminders**: Schedule periodic alerts for upcoming events such as meetings, product sales, live broadcasts, etc.
+- **Multi-channel Distribution**: Distribute information seamlessly across various channels like SMS and email that can scale to millions of users.
+
+---
+
+## Skills Demonstrated
+- Real-Time API Integration
+- Automated Workflows
+- Python Development
+- Least Privilege
+
+---
+
+## How to Get Started
 
 ### **Clone the Repository**
 ```bash
@@ -133,14 +145,7 @@ cd game-day-notifications
 4. Verify that SMS notifications are sent to the subscribed users.
 
 
-### **What We Learned**
-1. Designing a notification system with AWS SNS and Lambda.
-2. Securing AWS services with least privilege IAM policies.
-3. Automating workflows using EventBridge.
-4. Integrating external APIs into cloud-based workflows.
-
-
 ### **Future Enhancements**
-1. Add NFL score alerts for extended functionality.
-2. Store user preferences (teams, game types) in DynamoDB for personalized alerts.
-3. Implement a web UI
+1. Fetch name of the venue instead of ID.
+2. Show top performers for games in progress/finished.
+3. Complete box score stats across both teams.
